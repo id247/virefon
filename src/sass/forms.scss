@@ -38,11 +38,33 @@
 		}
 	}
 
+	&--orange{
+		background: $orange;
+		color: #fff;
+		&:hover{
+			background: lighten($orange, 5%);
+		}
+		&:active{
+			background: darken($orange, 5%);
+		}
+	}
+
+	&--blue{
+		background: $blue;
+		color: #fff;
+		&:hover{
+			background: lighten($blue, 5%);
+		}
+		&:active{
+			background: darken($blue, 5%);
+		}
+	}
+
 	&--m{
-		border-radius: 8px;
-		font-weight: 700;
-		font-size: 12px;
-		padding: 8px 20px 8px;
+		border-radius: 5px;
+		font-weight: 400;
+		font-size: 24px;
+		padding: 13px 20px 13px;
 	}
 
 	&--l{

@@ -7,6 +7,12 @@
 	overflow: hidden;
 	position: relative;
 
+	min-height: 100vh;
+
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+
 	&__section{
 		
 	}
@@ -17,11 +23,11 @@
  * ========================================================================== */
 
 .section{
-	padding: 80px 0 80px;
+	padding: 30px 0 30px;
 
 	&__wrap{
 		@include clearfix;
-		max-width: 1000px;
+		max-width: 700px;
 		padding: 0 10px;
 		margin: auto;
 	}
@@ -39,6 +45,157 @@
 	}
 }
 
+/* ==========================================================================
+ * header
+ * ========================================================================== */
+
+.header{
+	padding: 10px 0;
+
+	&__logo-placeholder{
+		text-align: center;	
+
+		@media (min-width: 1000px){
+			position: absolute;
+			top: 10px;
+			left: 10px;
+		}
+	}
+
+	&__logo{
+		display: inline-block;
+		text-indent: -9999px;
+		@include sprite($viferon);
+	}
+}
+
+
+/* ==========================================================================
+ * footer
+ * ========================================================================== */
+
+.footer{
+	padding: 0;
+	background: #0f5cb1 url(../images/bg/bottom.png) 100% 0 no-repeat;
+	color: #fff;
+	padding: 13px 275px 13px 10px;
+
+	@media (max-width: 1300px){
+		background-image: none;
+		padding-right: 10px;
+		text-align: center;
+	}
+	
+	&__wrap{
+		max-width: none;
+	}
+	
+	&__text{
+		font-size: 21px;
+		font-family: 'Arial Narrow';
+		@media (max-width: 1600px){
+			font-size: 18px;
+		}
+		@media (max-width: 1400px){
+			font-size: 16px;
+		}
+		@media (max-width: 1300px){
+			font-size: 16px;
+		}
+	}
+}
+
+/* ==========================================================================
+ * app-section
+ * ========================================================================== */
+
+.app-section{
+
+	&__box{
+		box-shadow: 0 0 90px rgba(0,0,0,.5);
+		border-radius: 18px;
+		background: #fff;
+	}
+
+	&__header{
+		background: $blue;
+		color: #fff;
+		padding: 23px 20px;
+		border-radius: 18px 18px 0 0;
+	}
+
+	&__content{
+		
+	}
+
+	&__back-placeholder{
+		float: left;
+		margin: -5px 0 0;
+		text-align: center;
+
+		@media (max-width: 480px){
+			float: none;
+			margin: 0 auto 10px;
+		}
+	}
+
+	&__back{
+		display: inline-block;
+		@include sprite($back);
+	}
+
+	&__title{
+		text-align: center;
+		margin: 0 55px;
+		font-size: 22px;
+		text-transform: uppercase;
+
+		@media (max-width: 480px){
+			margin: 0;
+		}
+	}
+}
+
+.app-main{
+
+	&__message{
+		background: #fff;
+		padding: 30px;
+		margin: 0 0 40px;
+	}
+
+	&__list{
+		background: #fff;
+		padding: 30px;
+	}
+
+	&__item{
+		max-width: 510px;
+		margin: 0 auto 18px;
+		&:last-child{
+			margin-bottom: 0;
+		}
+	}
+
+	&__href{
+		width: 100%;
+	}
+}
+
+/* ==========================================================================
+ * app-inner
+ * ========================================================================== */
+
+.app-inner{
+
+	&__chat{
+		
+	}
+
+	&__questions{
+		
+	}
+}
 
 /* ==========================================================================
  * app
@@ -63,6 +220,139 @@
 		z-index: 550;
 	}
 
+}
+
+/* ==========================================================================
+ * app-chat
+ * ========================================================================== */
+
+.app-chat{
+	padding: 30px;
+
+	height: 310px;
+	overflow: auto;
+
+	&__list{
+		
+	}
+
+	&__item{
+		margin: 0 15% 20px 0;
+
+		&--your{
+			margin: 0 0 20px 15%;
+		}
+
+		@media (max-width: 480px){
+			margin: 0 0 20px;
+		}
+	}
+}
+
+/* ==========================================================================
+ * app-message
+ * ========================================================================== */
+
+.app-message{
+	background: #f0f0f0;
+	padding: 20px;
+	border-radius: 18px;
+
+
+	&--your{
+		text-align: right;
+		background: #daf1fb;
+		.app-message{
+			&__image-placeholder{
+				float: right;
+			}
+			&__content{
+				margin: 0 70px 0 0;
+				@media (max-width: 480px){
+					margin: 70px 0 0;
+				}
+			}
+		}
+	}
+
+	&__image-placeholder{
+		float: left;
+		overflow: hidden;
+		border-radius: 50%;
+		width: 60px;
+		height: 60px;
+	}
+
+	&__image{
+		display: inline-block;
+		width: 100%;
+		height: auto;
+	}
+
+	&__content{
+		margin: 0 0 0 70px;
+		@media (max-width: 480px){
+			margin: 70px 0 0;
+		}
+	}
+
+	&__name{
+		font-size: 12px;
+		margin: 0 0 5px;
+		color: #8a8a8a;
+	}
+}
+
+/* ==========================================================================
+ * app-questions
+ * ========================================================================== */
+
+.app-questions{
+
+	&__list{
+		text-align: center;
+		display: flex;
+	}
+
+	&__item{
+		border-left: 1px solid #5483be;
+
+		flex: 1;
+
+		&:first-child{
+			border: 0;
+		}
+	}
+
+	&__button{
+		background: $blue;
+		color: #fff;
+
+		font-size: 18px;
+		line-height: (24/18);
+		font-weight: 600;
+		height: 100%;
+	}
+
+	&__button-inner{
+		padding: 15px;
+
+		min-height: 160px;
+		display: flex;
+		flex-flow: column;
+		justify-content: center;
+	}
+
+	&__more-placeholder{
+		text-align: center;
+	}
+
+	&__more{
+		width: 100%;
+		border-radius: 0 0 18px 18px;
+		font-size: 18px;
+		padding: 10px;
+	}
 }
 
 /* ==========================================================================

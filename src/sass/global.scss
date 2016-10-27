@@ -3,13 +3,16 @@
  * ========================================================================== */
 
 .html{
-	min-width: 1020px;
+	//min-width: 1020px;
 	-webkit-font-smoothing: antialiased;
 	text-size-adjust: none;
 	font-size: 16px;
 	line-height: 1.2;
 	font-family: $mainFontFamily;
 	color: $text;
+	background: #74cbee url(../images/bg/sky.jpg) 50% 50% no-repeat;
+	background-size: cover;
+	min-height: 100%;
 }
 
 .html__body{
@@ -41,8 +44,8 @@
 
 
 .text{
-	font-size: 18px;
-	line-height: (26/18);
+	font-size: 16px;
+	line-height: (24/16);
 
 	h3{
 		font-size: 24px;
