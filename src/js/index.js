@@ -7,13 +7,13 @@ import configureStore from './store/configureStore';
 import Root from './components/Root';
 
 const store = configureStore(); 
-const app = document.getElementById('app');
+const appContent = document.getElementById('app-content');
 
-if (app){
+if (appContent){
 
 	ReactDOM.render(
 		<Root store={store} />,
-		app
+		appContent
 	);
 
 }

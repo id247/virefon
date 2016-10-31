@@ -1,18 +1,68 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import User from '../../components/user/User';
+import Message from '../../components/chat/Message';
+import { DocUser } from 'appSettings';
 
 //import * as asyncActions from '../../actions/async';
 //import * as pageActions from '../../actions/page';
+//
+
+
+const themes = [
+	{
+		title: 'Профилактика гриппа и ОРВИ',
+		url: 'prevention',
+	},
+	{
+		title: 'Лечение гриппа и ОРВИ',
+		url: 'treatment',
+	},
+	{
+		title: 'Применение препарата Виферон у детей',
+		url: 'viferon',
+	},
+];
 
 class Main extends React.Component {
 
 	render(){
-		const { props } = this;
+
 		return(
-			<div className="section__wrap app__wrap">
-				<User mixClass="app__user" />
+			<div className="app-main">
+
+				<div className="app-main__message">
+
+					<Message
+						user={DocUser}
+						text={(`
+							Здравствуйте! Я Ваш персональный врач-консультант по вопросам здоровья. Рад приветствовать Вас в своей виртуальной приёмной.
+									
+							Выберите тему, которую Вы хотели бы обсудить со мной.
+						`)}
+					/>
+
+				</div>
+
+				<ul className="app-main__list">
+
+					{themes.map( (theme, i) => (
+
+					<li className="app-main__item" key={'theme' + i}>
+
+						<a 
+							href={'#' + theme.url}
+							className="app-main__href button button--orange button--m"
+						>
+							{theme.title}
+						</a>
+
+					</li>
+
+					))}
+
+				</ul>
+
 			</div>
 		);
 	}
@@ -25,7 +75,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-	//logout: () => dispatch(asyncActions.logout()), 
+	//logout: () => dispatch(asyncActions.logout()),
 });
 
 Main.propTypes = {

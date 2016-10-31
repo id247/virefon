@@ -12,11 +12,18 @@ class App extends React.Component {
 
 	render(){
 		const { props } = this;
+
+		if (!props.profile){
+			return null;
+		}
+
 		return props.children;
 	}
 }
 
-const mapStateToProps = null;
+const mapStateToProps = (state, ownProps) => ({
+	profile: state.user.profile,
+});
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
 	init: () => dispatch(asyncActions.init()), 

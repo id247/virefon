@@ -16,3 +16,9 @@ export const PromoOptions = {
 	server: 'https://staging.dnevnik.ru',
 }
 
+
+export const DocUser = {	
+	photoMedium: 'http://localhost:9000/assets/images/doc.png',
+	fullName: 'Интерактивный врач-консультант',
+}
+
