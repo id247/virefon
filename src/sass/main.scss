@@ -257,6 +257,7 @@
 	background: #f0f0f0;
 	padding: 20px;
 	border-radius: 18px;
+	@include clearfix;
 
 
 	&--your{
@@ -305,6 +306,15 @@
 	&__text{
 		//text-align: left;
 	}
+
+	&__typing{
+		background: url(../images/writing.gif) 50% 0 no-repeat;
+		width: 33px;
+		height: 35px;
+		display: inline-block;
+		text-indent: -9999px;
+		text-align: left;
+	}
 }
 
 /* ==========================================================================
@@ -336,6 +346,7 @@
 		line-height: (24/18);
 		font-weight: 600;
 		height: 100%;
+		width: 100%;
 	}
 
 	&__button-inner{

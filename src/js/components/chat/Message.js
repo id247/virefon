@@ -17,19 +17,32 @@ const Message = (props) => (
 				{props.user.fullName}
 			</div>
 
+			{
+			props.typing
+			?
+			<span className="app-message__typing">Печатает...</span>
+			:
 			<MessageText
 				text={props.text}
 			/>
+			}
+			
 
 		</div>
 
 	</div>
 );
 
+Message.defaultProps = {
+	your: false,
+	typing: false,
+};
+
 Message.propTypes = {
 	user: React.PropTypes.object.isRequired,
 	text: React.PropTypes.string.isRequired,
 	your: React.PropTypes.bool,
+	typing: React.PropTypes.bool,
 //	Array: React.PropTypes.array.isRequired,
 //	Bool: React.PropTypes.bool.isRequired,
 //	Func: React.PropTypes.func.isRequired,
