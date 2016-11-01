@@ -238,12 +238,7 @@ class Chat extends React.Component {
 		super(props);
 
 		this.state = {
-			messages: [
-				{
-					user: DocUser,
-					text: firstMessages[props.params.theme] ? firstMessages[props.params.theme] : 'Вы выбрали несуществующую тему',
-				},
-			],
+			messages: [],
 			questions: questions[props.params.theme] ? questions[props.params.theme] : [],
 			questionsStart: 0,
 			docTexting: 0,
@@ -251,18 +246,43 @@ class Chat extends React.Component {
 	}
 
 	componentDidMount() {
-		const { props } = this;
-		this._scrollChatToBottom();
+		const { props, state } = this;
+
+		this.mounted = true;
+
+		this._firstQuestion();
 	}
 
 	componentDidUpdate(){
 		this._scrollChatToBottom();
 	}
 
+	componentWillUnmount(){
+		const { props, state } = this;
+
+		console.log('componentWillUnmount');
+
+		this.mounted = false;
+	}
+
 	_scrollChatToBottom(){
 		const { refs } = this;
 
 		refs['app-chat'].scrollTop = refs['app-chat'].scrollHeight;
+	}
+
+	_firstQuestion(){
+		const { props, state } = this;
+
+		const text = firstMessages[props.params.theme] 
+			? firstMessages[props.params.theme] 
+			: 'Вы выбрали несуществующую тему';
+
+		this._docStartTexting()
+		.then( () => this._wait(2000) )
+		.then( () => this._docAnswer(text) )
+		.then( () => this._docStopTexting() )
+		;		
 	}
 
 	_ask(questionId){
@@ -277,13 +297,22 @@ class Chat extends React.Component {
 		.then( () => this._wait(3000) )
 		.then( () => this._docAnswer(currentQuestion.answer) )
 		.then( () => this._docStopTexting() )
+		.catch( e => { console.log(e); })
 		;
 
 	}
 
 	_wait(ms, ...rest){
+		const that = this;
 
 		return new Promise( (resolve, reject) => {
+			
+			const { state, props } = that;
+						
+			if (!that.mounted){
+				reject('Unmounted');
+				return;
+			}
 			
 			setTimeout(() => {
 				resolve(...rest);
@@ -298,6 +327,11 @@ class Chat extends React.Component {
 		return new Promise( (resolve, reject) => {
 			
 			const { state, props } = that;
+						
+			if (!that.mounted){
+				reject('Unmounted');
+				return;
+			}
 
 			this.setState({
 				...state,
@@ -318,6 +352,11 @@ class Chat extends React.Component {
 		return new Promise( (resolve, reject) => {
 			
 			const { state, props } = that;
+						
+			if (!that.mounted){
+				reject('Unmounted');
+				return;
+			}
 
 			this.setState({
 				...state,
@@ -335,11 +374,14 @@ class Chat extends React.Component {
 	_docAnswer(answer){
 		const that = this;
 
-		console.log(answer);
-
 		return new Promise( (resolve, reject) => {
 			
 			const { state, props } = that;
+						
+			if (!that.mounted){
+				reject('Unmounted');
+				return;
+			}
 
 			this._addMessage(DocUser, answer);
 
@@ -355,7 +397,12 @@ class Chat extends React.Component {
 		return new Promise( (resolve, reject) => {
 			
 			const { state, props } = that;
-			
+						
+			if (!that.mounted){
+				reject('Unmounted');
+				return;
+			}
+
 			const newMessages = [
 				...state.messages,
 				{
@@ -382,6 +429,11 @@ class Chat extends React.Component {
 		setTimeout(() => {
 			
 			const { state, props } = this;
+						
+			if (!that.mounted){
+				reject('Unmounted');
+				return;
+			}
 
 			const updatedMessage = {
 				...state.messages[messageIndex],
@@ -414,6 +466,11 @@ class Chat extends React.Component {
 		return new Promise( (resolve, reject) => {
 			
 			const { state, props } = that;
+						
+			if (!that.mounted){
+				reject('Unmounted');
+				return;
+			}
 
 			const questionIndex = state.questions.findIndex( question => question.id === questionId );
 
@@ -437,7 +494,7 @@ class Chat extends React.Component {
 		});
 	}
 
-	_changeQuestionsStart(){
+	_changeQuestions(){
 
 		const { state, props } = this;
 
@@ -461,10 +518,10 @@ class Chat extends React.Component {
 		this._ask(questionId);
 	}
 
-	_changeQuestionsStartHandler = () => (e) =>{
+	_changeQuestionsHandler = () => (e) =>{
 		e.preventDefault();
 
-		this._changeQuestionsStart();
+		this._changeQuestions();
 	}
 
 	render(){
@@ -557,7 +614,7 @@ class Chat extends React.Component {
 						(
 							<button 
 								className="app-questions__more button button--orange button--m"
-								onClick={this._changeQuestionsStartHandler()}
+								onClick={this._changeQuestionsHandler()}
 							>Еще вопросы</button>
 
 						)
