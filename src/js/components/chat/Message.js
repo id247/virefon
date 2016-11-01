@@ -36,6 +36,8 @@ const Message = (props) => (
 Message.defaultProps = {
 	your: false,
 	typing: false,
+	user: {},
+	text: '',
 };
 
 Message.propTypes = {

@@ -8,14 +8,16 @@ import Login 		from '../components/pages/Login';
 import App 			from '../components/App';
 import Main 		from '../components/pages/Main';
 import Chat 		from '../components/pages/Chat';
+import NotFound 	from '../components/pages/NotFound';
 
 const routes = (
 	<Router history={hashHistory}>
-		<Route path="/login" component={Login} />
 		<Route path="/" component={App}>
 			<IndexRoute component={Main} />
-			<Route path=":theme" component={Chat} />
-		</Route>		
+			<Route path="theme/:theme" component={Chat} />
+		</Route>
+		<Route path="/login" component={Login} />
+		<Route path="*" component={NotFound} />			
 	</Router>
 );
 

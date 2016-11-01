@@ -6,8 +6,8 @@ import Back 		from '../components/header/Back';
 
 const routes = (
 	<Router history={hashHistory}>
-		<Route path="/" component={Back} />	
-		<Route path="/:theme" component={Back} />	
+		<Route path="/theme/:theme" component={Back} />	
+		<Route path="*" component={Back} />	
 	</Router>
 );
 

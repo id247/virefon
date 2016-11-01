@@ -1,9 +1,8 @@
 export const OAuthOptions = {
-	provider: 'app',
 	authUrl: 'https://login.dnevnik.ru/oauth2',
 	grantUrl: 'https://api.dnevnik.ru/v1/authorizations',
-	scope: 'Avatar,FullName,Birthday,Age,Roles,Files,Sex',	
-	clientId: '7d0d92280bd34aa9a5afec1c749bf0e1',
+	scope: 'Avatar,FullName',	
+	clientId: '3fab5098447a476e8af9c5db98a8b4f4',
 	redirectUrl: 'https://ad.dnevnik.ru/promo/oauth2',
 }
 
@@ -12,6 +11,11 @@ export const APIoptions = {
 }
 
 export const PromoOptions = {	
-	url: 'https://ad.dnevnik.ru/promo/wishlist3',
+	url: 'https://ad.dnevnik.ru/promo/viferon-chat',
 	server: 'https://dnevnik.ru',
+}
+
+export const DocUser = {	
+	photoMedium: 'https://ad.csdnevnik.ru/special/staging/viferon-chat/images/doc.png',
+	fullName: 'Интерактивный врач-консультант',
 }

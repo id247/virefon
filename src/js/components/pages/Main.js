@@ -51,7 +51,7 @@ class Main extends React.Component {
 					<li className="app-main__item" key={'theme' + i}>
 
 						<a 
-							href={'#' + theme.url}
+							href={'#/theme/' + theme.url}
 							className="app-main__href button button--orange button--m"
 						>
 							{theme.title}

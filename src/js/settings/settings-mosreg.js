@@ -16,3 +16,7 @@ export const PromoOptions = {
 	server: 'https://school.mosreg.ru',
 }
 
+export const DocUser = {	
+	photoMedium: 'https://ad.csdnevnik.ru/special/staging/viferon/images/doc.png',
+	fullName: 'Интерактивный врач-консультант',
+}

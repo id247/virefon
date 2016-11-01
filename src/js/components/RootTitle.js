@@ -6,8 +6,8 @@ import Title 		from '../components/header/Title';
 
 const routes = (
 	<Router history={hashHistory}>
-		<Route path="/" component={Title} />	
-		<Route path="/:theme" component={Title} />	
+		<Route path="/theme/:theme" component={Title} />
+		<Route path="*" component={Title} />		
 	</Router>
 );
 

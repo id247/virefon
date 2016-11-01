@@ -1,5 +1,4 @@
 export const OAuthOptions = {
-	provider: 'app',
 	authUrl: 'https://login.staging.dnevnik.ru/oauth2',
 	grantUrl: 'https://api.staging.dnevnik.ru/v1/authorizations',
 	scope: 'Avatar,FullName,Birthday,Age,Roles,Schools,Organizations,EduGroups,Lessons,Marks,EduWorks,Relatives,Files,Contacts,Friends,Groups,Networks,Events,Wall,Messages,EmailAddress,Sex,SocialEntityMembership',	

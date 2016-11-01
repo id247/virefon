@@ -67,6 +67,8 @@ export function catchError(err){
 export function login() {
 	return dispatch => {
 		dispatch(loadingActions.loadingShow());
+
+		console.log('login');
 		
 		return OAuth.login()
 		.then( () => {
@@ -95,6 +97,8 @@ export function logout() {
 
 export function getInitialData() {
 
+	console.log('getInitialData');
+
 	return dispatch => {
 		dispatch(loadingActions.loadingShow());	
 
@@ -103,6 +107,8 @@ export function getInitialData() {
 			dispatch(loadingActions.loadingHide());
 
 			dispatch(userActions.userSet(user));
+
+			console.log('userSet');
 		})
 		.catch( err => { 
 			dispatch(loadingActions.loadingHide());

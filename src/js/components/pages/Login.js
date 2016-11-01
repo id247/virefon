@@ -8,8 +8,9 @@ import * as pageActions from '../../actions/page';
 
 class Login extends React.Component {
 
-	componentWillMount(){
-		const { props } = this;		
+	componentDidMount(){
+		const { props } = this;	
+		console.log('Login');	
 		if (props.profile){
 			props.redirect('/');
 		}
@@ -22,18 +23,6 @@ class Login extends React.Component {
 
 		return (
 			<div className={( (props.mixClass ? props.mixClass : '') + ' app-login')}>
-
-				<h1 className="app-login__title">
-					
-				</h1>
-
-				<div className="app-login__text text">
-					
-					<p>
-						
-					</p>
-
-				</div>
 
 				<div className="app-login__button-placeholder">
 
@@ -63,7 +52,6 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({ 
 	login: () => dispatch(asyncActions.login()),
-	init: () => dispatch(asyncActions.init()), 
 	redirect: (page) => dispatch(pageActions.setPageWithoutHistory(page)), 
 });
 

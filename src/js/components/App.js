@@ -5,8 +5,9 @@ import * as asyncActions from '../actions/async';
 
 class App extends React.Component {
 
-	componentWillMount(){
+	componentDidMount(){
 		const { props } = this;
+		console.log('init');
 		props.init();
 	}
 

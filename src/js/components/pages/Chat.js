@@ -268,7 +268,13 @@ class Chat extends React.Component {
 	_scrollChatToBottom(){
 		const { refs } = this;
 
-		refs['app-chat'].scrollTop = refs['app-chat'].scrollHeight;
+		const chat = refs['app-chat'];
+
+		const lastMessage = chat.querySelectorAll('.app-chat__item');
+
+		console.log(lastMessage[lastMessage.length - 1].offsetTop);
+
+		chat.scrollTop = lastMessage[lastMessage.length - 1].offsetTop - 30;
 	}
 
 	_firstQuestion(){
