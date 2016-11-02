@@ -4,25 +4,7 @@ import { connect } from 'react-redux';
 import Message from '../../components/chat/Message';
 import { DocUser } from 'appSettings';
 
-//import * as asyncActions from '../../actions/async';
-//import * as pageActions from '../../actions/page';
-//
-
-
-const themes = [
-	{
-		title: 'Профилактика гриппа и ОРВИ',
-		url: 'prevention',
-	},
-	{
-		title: 'Лечение гриппа и ОРВИ',
-		url: 'treatment',
-	},
-	{
-		title: 'Применение препарата Виферон у детей',
-		url: 'viferon',
-	},
-];
+import { themes } from '../../settings/data.js';
 
 class Main extends React.Component {
 
